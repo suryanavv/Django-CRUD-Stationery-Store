@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1 class="my-4">{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p><strong>Price:</strong> {{ item.price }} USD</p>
+    <p><strong>Stock:</strong> {{ item.stock }}</p>
+    <a href="{% url 'stationery_update' item.pk %}" class="btn btn-secondary">Edit</a>
+    <form action="{% url 'stationery_delete' item.pk %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a href="{% url 'stationery_list' %}" class="btn btn-link">Back to list</a>
+{% endblock %}

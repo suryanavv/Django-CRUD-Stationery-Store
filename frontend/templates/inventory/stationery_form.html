@@ -1,0 +1,13 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1 class="my-4">{% if form.instance.pk %}Edit{% else %}Create{% endif %} Stationery Item</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">{% if form.instance.pk %}Update{% else %}Create{% endif %}</button>
+    </form>
+    <a href="{% url 'stationery_list' %}" class="btn btn-link mt-3">Back to list</a>
+{% endblock %}

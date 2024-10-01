@@ -1,0 +1,14 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+    <h1 class="my-4">Stationery List</h1>
+    <a href="{% url 'stationery_create' %}" class="btn btn-primary mb-4">Add New Item</a>
+    <div class="list-group">
+        {% for item in items %}
+            <a href="{% url 'stationery_detail' item.pk %}" class="list-group-item list-group-item-action">
+                <h5 class="mb-1">{{ item.name }}</h5>
+                <p class="mb-1">Price: {{ item.price }} USD, Stock: {{ item.stock }}</p>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
